@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace PushGag
 {
-    string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnStr"].ConnectionString;
+    //string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnStr"].ConnectionString;
     public partial class Layout : System.Web.UI.MasterPage
     {
         
