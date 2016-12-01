@@ -20,7 +20,11 @@ namespace PushGag.DAO {
                                                             "VALUES (@user_name, @mdp_user, @email)";
 
         public const string READ_REQUEST = "SELECT user_id, user_name, date_start, mdp_user, email " +
-                                                                 "FROM users WHERE user_id = @user_id"; 
+                                                                 "FROM users WHERE user_id = @user_id";
+
+        public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users where user_name = '@user_name'";
+        public const string COUNTEMAIL_REQUEST = "SELECT COUNT(user_name) FROM users where email = '@email'";
+        int count = 0;
 
         public void Add(UserDTO userDTO) {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
@@ -38,6 +42,7 @@ namespace PushGag.DAO {
             UserDTO userDTO = null;
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))  {
                 using (MySqlCommand readCommand = new MySqlCommand(READ_REQUEST, connection)) {
+                    connection.Open();
                     readCommand.Parameters.AddWithValue("@user_id", userID);
                     MySqlDataReader result = readCommand.ExecuteReader();
 
@@ -52,6 +57,41 @@ namespace PushGag.DAO {
             }
 
             return userDTO;
+        }
+
+
+        public int doesUserExist(string userName)
+        {
+            //UserDTO userDTO = null;
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNT_REQUEST, connection))
+                {
+                    connection.Open();
+                    readCommand.Parameters.AddWithValue("@user_name", userName);
+                    count = (int) readCommand.ExecuteScalar();
+
+                }
+            }
+
+            return count;
+        }
+
+        public int doesEmailExist(string email)
+        {
+            //UserDTO userDTO = null;
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMAIL_REQUEST, connection))
+                {
+                    connection.Open();
+                    readCommand.Parameters.AddWithValue("@email", email);
+                    count = (int)readCommand.ExecuteScalar();
+
+                }
+            }
+
+            return count;
         }
 
 
