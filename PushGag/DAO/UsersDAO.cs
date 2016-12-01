@@ -25,6 +25,7 @@ namespace PushGag.DAO {
         public void Add(UserDTO userDTO) {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
                 using (MySqlCommand addCommand = new MySqlCommand(ADD_REQUEST, connection)) {
+                    connection.Open();
                     addCommand.Parameters.AddWithValue("@user_name", userDTO.Username);
                     addCommand.Parameters.AddWithValue("@mdp_user", userDTO.Password);
                     addCommand.Parameters.AddWithValue("@email", userDTO.Email);
