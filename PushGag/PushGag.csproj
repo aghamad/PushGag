@@ -112,6 +112,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\navbar-fixed-top.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Admin\AdminUpload.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Registration.aspx" />
@@ -124,9 +125,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\UsersDAO.cs" />
+    <Compile Include="DTO\ArticleDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AdminUpload.aspx.cs">
+      <DependentUpon>AdminUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\AdminUpload.aspx.designer.cs">
+      <DependentUpon>AdminUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
