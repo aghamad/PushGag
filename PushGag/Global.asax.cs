@@ -16,12 +16,18 @@ namespace PushGag
             routes.MapPageRoute("Home",
                 "",
                 "~/Pages/Home.aspx");
+
             routes.MapPageRoute("Registration",
                 "register",
                 "~/Pages/Registration.aspx");
+
             routes.MapPageRoute("Login",
                 "login",
                 "~/Pages/Login.aspx");
+
+            routes.MapPageRoute("Admin",
+                "admin",
+                "~/Pages/Admin/AdminUpload.aspx");
         }
 
         protected void Application_Start(object sender, EventArgs e)

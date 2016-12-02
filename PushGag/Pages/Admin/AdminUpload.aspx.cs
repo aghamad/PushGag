@@ -17,7 +17,22 @@ namespace PushGag.Pages.Admin
                 ListItem item = new ListItem(categorie.ToString());
                 DropDownListCategorie.Items.Add(item);
             }
+
         }
+
+        protected void Upload_Data(object sender, EventArgs e) {
+            string title = titleTextBox.Text;
+            // EnumCategorie categorie = DropDownListCategorie.SelectedValue;
+            if (String.IsNullOrEmpty(textTextBox.Text)) {
+                // Cela veut dire que le admin veux upload un text 
+            } else if (String.IsNullOrEmpty(videoTextBox.Text)) {
+                // video 
+            } else  {
+                // image // check if browse is not null
+                // upload to cloudinary if validation passes through
+            }
+        }
+
 
     }
 }

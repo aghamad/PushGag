@@ -22,6 +22,15 @@ namespace PushGag.Pages.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm formAdminUpload;
         
         /// <summary>
+        /// titleTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox titleTextBox;
+        
+        /// <summary>
         /// DropDownListCategorie control.
         /// </summary>
         /// <remarks>
@@ -31,12 +40,30 @@ namespace PushGag.Pages.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCategorie;
         
         /// <summary>
-        /// titleTextBox control.
+        /// textTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox titleTextBox;
+        protected global::System.Web.UI.WebControls.TextBox textTextBox;
+        
+        /// <summary>
+        /// videoTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox videoTextBox;
+        
+        /// <summary>
+        /// ButtonUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonUpload;
     }
 }
