@@ -17,14 +17,33 @@ namespace PushGag.Pages
         }
 
         protected void Register_User(object sender, EventArgs e) {
-            //var usersAdd = new DAO.UsersDAO();
-            Console.WriteLine("Ass");
+            
+            
             UsersDAO usersDAO = new UsersDAO();
-            UserDTO userDTO = new UserDTO();
-            userDTO.Username = usernameTextBox.Text;
-            userDTO.Password = passwordTextBox.Text;
-            userDTO.Email = emailTextBox.Text;
-            usersDAO.Add(userDTO); 
+            int countEmails = usersDAO.doesEmailExist(emailTextBox.Text);
+            int countUsers = usersDAO.doesUserExist(usernameTextBox.Text);
+
+            if (countEmails > 0)
+            {
+                lblEmail.Text = "Email déjà utilisé";
+                if (countUsers > 0)
+                {
+                    lblUsername.Text = "Username déjà utilisé";
+                }
+            }
+            else if (countUsers > 0)
+            {
+                lblUsername.Text = "Username déjà utilisé";
+            }
+            else {
+
+                UserDTO userDTO = new UserDTO();
+                userDTO.Username = usernameTextBox.Text;
+                userDTO.Password = passwordTextBox.Text;
+                userDTO.Email = emailTextBox.Text;
+                usersDAO.Add(userDTO);
+            }
+
         }
     }
 }

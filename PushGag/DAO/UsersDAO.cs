@@ -22,8 +22,8 @@ namespace PushGag.DAO {
         public const string READ_REQUEST = "SELECT user_id, user_name, date_start, mdp_user, email " +
                                                                  "FROM users WHERE user_id = @user_id";
 
-        public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users where user_name = '@user_name'";
-        public const string COUNTEMAIL_REQUEST = "SELECT COUNT(user_name) FROM users where email = '@email'";
+        public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users where user_name = @user_name";
+        public const string COUNTEMAIL_REQUEST = "SELECT COUNT(user_name) FROM users where email = @email";
         int count = 0;
 
         public void Add(UserDTO userDTO) {
@@ -69,7 +69,7 @@ namespace PushGag.DAO {
                 {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@user_name", userName);
-                    count = (int) readCommand.ExecuteScalar();
+                    count = Convert.ToInt32(readCommand.ExecuteScalar());
 
                 }
             }
@@ -86,7 +86,7 @@ namespace PushGag.DAO {
                 {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@email", email);
-                    count = (int)readCommand.ExecuteScalar();
+                    count = Convert.ToInt32(readCommand.ExecuteScalar());
 
                 }
             }
