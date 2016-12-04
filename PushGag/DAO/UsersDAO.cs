@@ -23,7 +23,9 @@ namespace PushGag.DAO {
                                                                  "FROM users WHERE user_id = @user_id";
 
         public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users where user_name = @user_name";
+
         public const string COUNTEMAIL_REQUEST = "SELECT COUNT(user_name) FROM users where email = @email";
+
         int count = 0;
 
         public void Add(UserDTO userDTO) {

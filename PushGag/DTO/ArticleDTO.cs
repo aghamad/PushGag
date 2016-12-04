@@ -38,5 +38,14 @@ namespace PushGag.DTO
             get; set;
         }
 
+        public static T ParseEnum<T>(string value) {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        public override string ToString(){
+            return String.Format("Type: {0} \n, Categorie: {1} \n, Title: {2} \n, Data: {3} \n",
+                                 Type, Categorie, Title, Data);
+        }
+
     }
 }

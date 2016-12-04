@@ -8,11 +8,11 @@
         <div class="col-md-6">
 
             <label>Titre</label>
-            <asp:TextBox ID="titleTextBox" class="form-control" placeholder="Title" runat="server"/>
+            <asp:TextBox ID="titleTextBox" class="form-control" placeholder="Title" runat="server" required autofocus/>
             <br />
 
             <label>Catégorie</label>
-            <asp:DropDownList ID="DropDownListCategorie" multiple class="form-control p-t-2" runat="server">
+            <asp:DropDownList ID="DropDownListCategorie" multiple class="form-control p-t-2" runat="server" required autofocus>
             </asp:DropDownList>
             <br />
 
@@ -37,7 +37,7 @@
              <div class="typeImage">
                 <label>Image:</label>     
                 <label class="btn btn-default btn-file">
-                Browse <input type="file" style="display: none;">
+                Browse <input type="file" style="display: none;" />
                 </label>
             </div>
             <br />
@@ -45,7 +45,7 @@
         </div>
         </form>
     </div>
-
+    <asp:Label ID="AdminLabel" runat="server" Text="Label"></asp:Label>
 </asp:Content>
 
 

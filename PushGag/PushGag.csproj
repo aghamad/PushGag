@@ -125,6 +125,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ArticlesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
     <Compile Include="DTO\ArticleDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
