@@ -22,9 +22,11 @@ namespace PushGag.DAO {
         public const string READ_REQUEST = "SELECT user_id, user_name, date_start, mdp_user, email " +
                                                                  "FROM users WHERE user_id = @user_id";
 
-        public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users where user_name = @user_name";
+        public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users WHERE user_name = @user_name";
 
-        public const string COUNTEMAIL_REQUEST = "SELECT COUNT(user_name) FROM users where email = @email";
+        public const string COUNTEMAIL_REQUEST = "SELECT COUNT(user_name) FROM users WHERE email = @email";
+
+        public const string COUNTEMDP_REQUEST = "SELECT COUNT(user_name) FROM users WHERE mdp_user = @mdp_user AND user_name = @user_name";
 
         int count = 0;
 
@@ -88,6 +90,24 @@ namespace PushGag.DAO {
                 {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@email", email);
+                    count = Convert.ToInt32(readCommand.ExecuteScalar());
+
+                }
+            }
+
+            return count;
+        }
+
+        public int doesUserMdpExist(string Password, string userName)
+        {
+            //UserDTO userDTO = null;
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMDP_REQUEST, connection))
+                {
+                    connection.Open();
+                    readCommand.Parameters.AddWithValue("@mdp_user", Password);
+                    readCommand.Parameters.AddWithValue("@user_name", userName);
                     count = Convert.ToInt32(readCommand.ExecuteScalar());
 
                 }

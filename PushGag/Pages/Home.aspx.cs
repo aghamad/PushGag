@@ -11,7 +11,15 @@ namespace PushGag
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_name"] != null)
+            {
+                Label1.Text =   "Session Created with success "+ Session["user_name"].ToString(); ;
 
+            }
+            else {
+
+                Label1.Text = "Session was NOT Created";
+            }
         }
     }
 }

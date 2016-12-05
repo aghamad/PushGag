@@ -3,5 +3,8 @@
         <title>Home - PushGag</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
-    <h3 class="display-5">Welcome to PushGag!</h3>
+    <form id="form1" runat="server">
+        <h3 class="display-5">Welcome to PushGag!<asp:Label ID="Label1" runat="server"></asp:Label>
+        </h3>
+    </form>
 </asp:Content>
