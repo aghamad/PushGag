@@ -33,6 +33,7 @@
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
+
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -43,8 +44,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <!-- class active exists -->
-            <li><a href="#">Log out</a></li>
-            <li><a href="#">Sign in</a></li>
+            <li><a runat="server" ID="logout" onServerClick="MyFuncion_Click" href="#">Log out</a></li>
+            <li><a runat="server" ID="login" href="#">Sign in</a></li>
             <li><a href="#">Sign up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
