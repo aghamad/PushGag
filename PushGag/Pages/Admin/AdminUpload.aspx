@@ -25,12 +25,12 @@
             <br />
 
             <div class="typeText">
-                <label>Text:</label>
+                <label>Text:</label> <asp:RegularExpressionValidator ID="RegularExpressionValidatorText" runat="server" ErrorMessage="Veuillez entrer 8 caractère ou plus" ControlToValidate="textTextBox" ForeColor="Red" ValidationExpression="^.{8,150}$"></asp:RegularExpressionValidator>
                 <asp:TextBox ID="textTextBox" class="form-control" rows="5" placeholder="Enter a joke or a riddle or ...." runat="server"/>
             </div>
 
             <div class="typeVideo">
-                <label>Video:</label>
+                <label>Video:</label> <asp:RegularExpressionValidator ID="RegularExpressionValidatorYoutube" runat="server" ErrorMessage="Veuillez entrer un link YouTube valide" ControlToValidate="videoTextBox" ForeColor="Red" ValidationExpression="(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"></asp:RegularExpressionValidator>
                 <asp:TextBox ID="videoTextBox" class="form-control" rows="1" placeholder="Enter a YouTube link" runat="server"/>
             </div>
 
@@ -45,7 +45,8 @@
         </div>
         </form>
     </div>
-    <asp:Label ID="AdminLabel" runat="server" Text="Label"></asp:Label>
+    <br />
+    <asp:Label ID="AdminLabel" runat="server" Text="Push it hard"></asp:Label>
 </asp:Content>
 
 

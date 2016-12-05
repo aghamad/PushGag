@@ -43,6 +43,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <!-- class active exists -->
+            <li><a href="#">Log out</a></li>
             <li><a href="#">Sign in</a></li>
             <li><a href="#">Sign up</a></li>
           </ul>

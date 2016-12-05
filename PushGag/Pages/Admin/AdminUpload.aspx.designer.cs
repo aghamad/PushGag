@@ -40,6 +40,15 @@ namespace PushGag.Pages.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCategorie;
         
         /// <summary>
+        /// RegularExpressionValidatorText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorText;
+        
+        /// <summary>
         /// textTextBox control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace PushGag.Pages.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textTextBox;
+        
+        /// <summary>
+        /// RegularExpressionValidatorYoutube control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorYoutube;
         
         /// <summary>
         /// videoTextBox control.

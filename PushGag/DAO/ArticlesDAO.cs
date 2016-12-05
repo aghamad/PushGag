@@ -15,21 +15,23 @@ namespace PushGag.DAO
                                                     "VALUES (@type, @categorie, @data, @article_title)";
 
         public const string GET_ALL_CATEGORIE_VALUES = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS " +
-                                                        "WHERE TABLE_NAME = 'articles' AND COLUMN_NAME = 'categorie";
+                                                        "WHERE TABLE_NAME = articles AND COLUMN_NAME = categorie";
 
 
 
-        public void Add(ArticleDTO articleDTO) {
+        public int Add(ArticleDTO articleDTO) {
+            int result = 0;
             using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
-                using (MySqlCommand addCommand = new MySqlCommand(ADD_REQUEST, connection)){
+                using (MySqlCommand addCommand = new MySqlCommand(ADD_REQUEST, connection)) {
                     connection.Open();
                     addCommand.Parameters.AddWithValue("@type", articleDTO.Type);
                     addCommand.Parameters.AddWithValue("@categorie", articleDTO.Categorie);
-                    addCommand.Parameters.AddWithValue("@data", articleDTO.Categorie);
-                    addCommand.Parameters.AddWithValue("@article_data", articleDTO.Title);
-                    addCommand.ExecuteNonQuery();
-                }
+                    addCommand.Parameters.AddWithValue("@data", articleDTO.Data);
+                    addCommand.Parameters.AddWithValue("@article_title", articleDTO.Title);
+                    result = addCommand.ExecuteNonQuery();
+                } 
             }
+            return result;
         }
 
         public List<String> GetAllCategorieValues() {
