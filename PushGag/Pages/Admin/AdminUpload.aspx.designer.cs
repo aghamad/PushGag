@@ -76,6 +76,15 @@ namespace PushGag.Pages.Admin {
         protected global::System.Web.UI.WebControls.TextBox videoTextBox;
         
         /// <summary>
+        /// FileUploadImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadImage;
+        
+        /// <summary>
         /// ButtonUpload control.
         /// </summary>
         /// <remarks>

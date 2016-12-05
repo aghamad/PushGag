@@ -6,30 +6,50 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PushGag.DTO;
 using PushGag.DAO;
+using PushGag.Util;
+using CloudinaryDotNet;
+using System.Web.Configuration;
+using CloudinaryDotNet.Actions;
+using System.IO;
 
 namespace PushGag.Pages.Admin
 {
-    public partial class AdminUpload : System.Web.UI.Page
+    public partial class AdminUpload : System.Web.UI.Page , ImageUploader
     {
+
+        private const string API_URL = "http://res.cloudinary.com/dqbwcvfq7/image/upload/";
+
         private ArticlesDAO articlesDAO;
+        private Cloudinary cloudinaryAccount;
+
+        public Cloudinary GetCloudinaryAccount() {
+            Account account = new Account(
+              "dqbwcvfq7",
+              "424299363629451",
+               WebConfigurationManager.AppSettings["MyAPISecret"]);
+            return new Cloudinary(account);
+        }
+
+        // Uploads Image and returns URL to the image 
+        public string UploadImage(string imagePath) {
+            var uploadParams = new ImageUploadParams() {
+                File = new FileDescription(@imagePath)
+            };
+            if (cloudinaryAccount == null) {
+                cloudinaryAccount = GetCloudinaryAccount();
+            }
+            var uploadResult = cloudinaryAccount.Upload(uploadParams);
+            return API_URL + uploadResult.PublicId;
+        }
 
         protected void Page_Load(object sender, EventArgs e) {
             // Load le ListBox avec nos categories 
             articlesDAO = new ArticlesDAO();
 
-            /*
-            foreach (String categorie in articlesDAO.GetAllCategorieValues()) {
-                ListItem item = new ListItem(categorie);
-                DropDownListCategorie.Items.Add(item);
-            }
-            */
-
             foreach (EnumCategorie categorie in Enum.GetValues(typeof(EnumCategorie))) {
                 ListItem item = new ListItem(categorie.ToString());
                 DropDownListCategorie.Items.Add(item);
             }
-           
-
         }
 
         protected void Upload_Data(object sender, EventArgs e) {
@@ -38,16 +58,23 @@ namespace PushGag.Pages.Admin
             string data = "";
             EnumType type = EnumType.text;
 
-            if (!String.IsNullOrEmpty(textTextBox.Text)) {
+            // Image en priorité
+            if (FileUploadImage.HasFile) {
+                string fileName = FileUploadImage.FileName;
+                string imagePath = Server.MapPath(".") + "//Uploads//" + fileName;
+                FileUploadImage.PostedFile.SaveAs(imagePath);
+                // Upload to Cloudinary 
+                type = EnumType.picture;
+                data = UploadImage(imagePath);
+                // get url and store it to data variable 
+
+            } else if (textTextBox.Text != "") {
                 type = EnumType.text;
                 data = textTextBox.Text;
-            } else if (!String.IsNullOrEmpty(videoTextBox.Text)) {
+            } else if (videoTextBox.Text != "") {
                 type = EnumType.video;
                 data = videoTextBox.Text;
-            } else  {
-                type = EnumType.picture;
-                // upload to cloudinary if validation passes through
-            }
+            } 
 
             ArticleDTO articleDTO = new ArticleDTO();
             articleDTO.Title = title;
@@ -57,7 +84,7 @@ namespace PushGag.Pages.Admin
 
             int result = articlesDAO.Add(articleDTO);
             if (result == 1) {
-                AdminLabel.Text = "Succesfully Added";
+                AdminLabel.Text = "Succesfully Added your " + type;
             }
             else {
                 AdminLabel.Text = "Error Please try again";

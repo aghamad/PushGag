@@ -11,6 +11,7 @@ $(".type-section li").click(function () {
         $(".typeText").show();
     }
     if ($(this).text() == "Video") {
+        $(".input-text").val("");
         $(".typeText").hide();
         $(".typeImage").hide();
         $(".typeVideo").show();
