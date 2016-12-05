@@ -14,7 +14,27 @@ namespace PushGag
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            if (Session["user_name"] != null)
+            {
+                login.Visible = false;
+                //ButtonReplaceId.Visible = false;
+                
+
+            }
+            else
+            {
+                logout.Visible = false;
+
+            }
+        }
+
+        protected void MyFuncion_Click(object sender, EventArgs e)
+        {
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('okokok')", true);
+            Session.Remove("user_name");
+            Session.RemoveAll();
+            Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
 
         }
     }
