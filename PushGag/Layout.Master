@@ -46,7 +46,7 @@
             <!-- class active exists -->
             <li><a runat="server" ID="logout" onServerClick="MyFuncion_Click" href="#">Log out</a></li>
             <li><a runat="server" ID="login" href="#">Sign in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a runat="server" ID="signup" href="#">Sign up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -56,6 +56,11 @@
         
         </asp:ContentPlaceHolder>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="OtherJavascript" runat="server"></asp:ContentPlaceHolder>

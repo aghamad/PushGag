@@ -18,8 +18,9 @@ namespace PushGag
             if (Session["user_name"] != null)
             {
                 login.Visible = false;
+                signup.Visible = false;
                 //ButtonReplaceId.Visible = false;
-                
+
 
             }
             else

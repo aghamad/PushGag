@@ -14,6 +14,20 @@ namespace PushGag.Pages
     {
         protected void Page_Load(object sender, EventArgs e) {
 
+
+
+            for (int i = 0; i < 18; i++)
+            {
+                System.Web.UI.HtmlControls.HtmlGenericControl createDiv =
+                   new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+                createDiv.ID = "createDiv";
+                createDiv.InnerHtml = " I'm a div, from code "+i+" behind ";
+                this.Controls.Add(createDiv);
+                this.Controls.Add(new LiteralControl("<div style='color: gray; height: 20px; width: 300px;'>I was created using Code Behind</div>"));
+            }
+
+
+
         }
 
         protected void Register_User(object sender, EventArgs e) {

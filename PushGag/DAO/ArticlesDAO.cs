@@ -17,7 +17,7 @@ namespace PushGag.DAO
         public const string GET_ALL_CATEGORIE_VALUES = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS " +
                                                         "WHERE TABLE_NAME = articles AND COLUMN_NAME = categorie";
 
-
+        public const string GET_ALL_ARTICLES = "SELECT id_article, article_title, data, date_article, pulled FROM articles ";
 
         public int Add(ArticleDTO articleDTO) {
             int result = 0;
@@ -49,6 +49,32 @@ namespace PushGag.DAO
             }
 
             return categories; ;
+        }
+
+        public List<ArticleDTO> GetAll() {
+            List<ArticleDTO> listArticles = new List<ArticleDTO>();
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand getCommand = new MySqlCommand(GET_ALL_ARTICLES, connection))
+                {
+                    connection.Open();
+                    //getCommand.Parameters.AddWithValue("@id_article", idArticle);
+                    MySqlDataReader result = getCommand.ExecuteReader();
+                    ArticleDTO articleDTO = null;
+                    while (result.Read())
+                    {
+                        articleDTO = new ArticleDTO();
+                        articleDTO.ArticleID = result.GetInt32(0);
+                        articleDTO.Title = result.GetString(1);
+                        articleDTO.Data = result.GetString(2);
+                        articleDTO.DatePublished = result.GetDateTime(3);               
+                        articleDTO.Pulled = result.GetInt32(4);
+                        listArticles.Add(articleDTO);
+                    }
+
+                }
+            }
+            return listArticles;
         }
 
 
