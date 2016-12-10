@@ -5,8 +5,8 @@ using System.Web;
 
 namespace PushGag.DTO
 {
-    public enum EnumType { picture, video, text };
-    public enum EnumCategorie { wtf, movie, anime, gaming, girl, boy, gif, darkhumor, food, prank, arabic, french, sport, quebec, party, love, texto, traveling, riddle, wordgame};
+    public enum EnumType {picture = 1, video = 2, text = 3};
+    public enum EnumCategorie {wtf = 1, movie = 2, anime = 3, gaming = 4, girl = 5, boy = 6, gif = 7, darkhumor = 8, food = 9, prank = 10, arabic = 11, french = 12, sport = 13, quebec = 14, party = 15, love = 16, texto = 17, traveling = 18, riddle = 19, wordgame = 20};
 
     public class ArticleDTO {
 

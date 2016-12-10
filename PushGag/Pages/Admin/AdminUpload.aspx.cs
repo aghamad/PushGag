@@ -84,7 +84,7 @@ namespace PushGag.Pages.Admin
 
             int result = articlesDAO.Add(articleDTO);
             if (result == 1) {
-                AdminLabel.Text = "Succesfully Added your " + type;
+                AdminLabel.Text = "Succesfully Added your " + articleDTO.Type + " in " + articleDTO.Categorie;
             }
             else {
                 AdminLabel.Text = "Error Please try again";
