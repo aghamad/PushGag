@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 namespace PushGag.DAO {
 
     /// <summary>
-    /// DAO pour effectuer des CRUDs avec la table users.
+    /// DAO pour effectuer des CRUDs dans la table users.
     /// </summary>
     public class AdminsDAO {
 
@@ -62,13 +62,10 @@ namespace PushGag.DAO {
         }
 
 
-        public int doesUserExist(string userName)
-        {
+        public int doesUserExist(string userName) {
             //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-            {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNT_REQUEST, connection))
-                {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNT_REQUEST, connection)) {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@user_name", userName);
                     count = Convert.ToInt32(readCommand.ExecuteScalar());
@@ -80,13 +77,10 @@ namespace PushGag.DAO {
         }
 
 
-        public int doesUserMdpExist(string Password, string Name)
-        {
+        public int doesUserMdpExist(string Password, string Name) {
             //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-            {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMDP_REQUEST, connection))
-                {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMDP_REQUEST, connection)) {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@mdp", Password);
                     readCommand.Parameters.AddWithValue("@name", Name);
@@ -94,7 +88,6 @@ namespace PushGag.DAO {
 
                 }
             }
-
             return count;
         }
 
