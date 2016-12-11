@@ -5,20 +5,17 @@ using System.Web;
 
 namespace PushGag.DTO
 {
-    public class EmployeeDTO
-    {
-        public int ID
-        {
+    public class EmployeeDTO {
+
+        public int ID {
             get; set;
         }
 
-        public string Name
-        {
+        public string Username {
             get; set;
         }
 
-        public string Password
-        {
+        public string Password {
             get; set;
         }
 

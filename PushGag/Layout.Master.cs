@@ -8,35 +8,30 @@ using MySql.Data.MySqlClient;
 
 namespace PushGag
 {
-    //string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnStr"].ConnectionString;
-    public partial class Layout : System.Web.UI.MasterPage
-    {
+    public partial class Layout : System.Web.UI.MasterPage {
         
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-            if (Session["user_name"] != null)
-            {
+        protected void Page_Load(object sender, EventArgs e) {
+       
+            if (Session["user_name"] != null || Session["Admin_ID"] != null)  {
                 login.Visible = false;
                 signup.Visible = false;
-                //ButtonReplaceId.Visible = false;
-
-
-            }
-            else
-            {
+            } else {
                 logout.Visible = false;
-
             }
         }
 
-        protected void MyFuncion_Click(object sender, EventArgs e)
-        {
-            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('okokok')", true);
-            Session.Remove("user_name");
+
+        protected void Logout_Event(object sender, EventArgs e) {
+
+            if (Session["Admin_ID"] != null) {
+                Session.Remove("Admin_Username");
+                Session.Remove("Admin_ID");
+            } else {
+                Session.Remove("user_name");
+            }
+
             Session.RemoveAll();
             Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
-
         }
     }
 }

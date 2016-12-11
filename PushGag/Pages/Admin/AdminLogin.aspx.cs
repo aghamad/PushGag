@@ -5,33 +5,34 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PushGag.DAO;
+using PushGag.DTO;
 
 namespace PushGag.Pages.Admin
 {
-    public partial class AdminLogin : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+    public partial class AdminLogin : System.Web.UI.Page {
 
+        private EmployeeDAO employeDAO;
+
+        protected void Page_Load(object sender, EventArgs e) {
+            if (Session["Admin_ID"] != null) {
+                // What are you doing here? .. 
+                Response.Redirect("/admin");
+            }
+            employeDAO = new EmployeeDAO();
         }
 
-        protected void Login_User(object sender, EventArgs e)
-        {
-            AdminsDAO adminsDAO = new AdminsDAO();
-            int countUserPassw = adminsDAO.doesUserMdpExist(passwordTextBox.Text, usernameTextBox.Text);
-            //int countUsers = usersDAO.doesUserExist(usernameTextBox.Text);
+        protected void Login_User(object sender, EventArgs e) {
 
-            if (countUserPassw == 0)
-            {
-                lblUserPassW.Text = "Username ou mot de passe Incorrect.";
-
+            EmployeeDTO employeeDTO = employeDAO.Get(PasswordTextBox.Text, UsernameTextBox.Text);
+            if (employeeDTO != null) {
+                LabelResult.Text = "Hey, " + employeeDTO.Username;
+                Session["Admin_Username"] = employeeDTO.Username;
+                Session["Admin_ID"] = employeeDTO.ID;
+                Response.Redirect("/admin");
+            } else {
+                LabelResult.Text = "Username ou mot de passe Incorrect.";
             }
-            else
-            {
-                lblUserPassW.Text = "connection ok";
-                Session["Emp_admin"] = usernameTextBox.Text;
-
-            }
+  
         }
     }
 }

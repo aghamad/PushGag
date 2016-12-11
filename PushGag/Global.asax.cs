@@ -25,9 +25,15 @@ namespace PushGag
                 "login",
                 "~/Pages/Login.aspx");
 
+            // Admin
+
             routes.MapPageRoute("Admin",
                 "admin",
                 "~/Pages/Admin/AdminUpload.aspx");
+
+            routes.MapPageRoute("AdminLogin",
+                "admin/login",
+                "~/Pages/Admin/AdminLogin.aspx");
         }
 
         protected void Application_Start(object sender, EventArgs e)

@@ -57,7 +57,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <!-- class active exists -->
-            <li><a runat="server" ID="logout" onServerClick="MyFuncion_Click" href="#">Log out</a></li>
+            <li><a runat="server" ID="logout" onServerClick="Logout_Event" href="#">Log out</a></li>
             <li><a runat="server" ID="login" href="/login">Sign in</a></li>
             <li><a runat="server" ID="signup" href="/register">Sign up</a></li>
           </ul>

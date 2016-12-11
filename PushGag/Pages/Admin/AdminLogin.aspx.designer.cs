@@ -22,31 +22,31 @@ namespace PushGag.Pages.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm formLogIn;
         
         /// <summary>
-        /// usernameTextBox control.
+        /// UsernameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox UsernameTextBox;
         
         /// <summary>
-        /// passwordTextBox control.
+        /// PasswordTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordTextBox;
+        protected global::System.Web.UI.WebControls.TextBox PasswordTextBox;
         
         /// <summary>
-        /// lblUserPassW control.
+        /// LabelResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserPassW;
+        protected global::System.Web.UI.WebControls.Label LabelResult;
         
         /// <summary>
         /// SubmitButton control.
