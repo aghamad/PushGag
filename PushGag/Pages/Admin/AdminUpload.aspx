@@ -31,7 +31,7 @@
 
             <div class="typeVideo">
                 <label>Video:</label> <asp:RegularExpressionValidator ID="RegularExpressionValidatorYoutube" runat="server" ErrorMessage="Veuillez entrer un link YouTube valide" ControlToValidate="videoTextBox" ForeColor="Red" ValidationExpression="(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"></asp:RegularExpressionValidator>
-                <asp:TextBox ID="videoTextBox" class="form-control input-video" OnClick="clearTextoField();" rows="1" placeholder="Enter a YouTube link" runat="server"/>
+                <asp:TextBox ID="videoTextBox" class="form-control input-video" OnClick="clearTextoField();" rows="1" placeholder="Enter a valid embed YouTube link" runat="server"/>
             </div>
 
              <div class="typeImage">

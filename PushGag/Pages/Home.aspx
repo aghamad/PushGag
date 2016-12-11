@@ -12,4 +12,9 @@
             
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="alert alert-info">
+            <strong>Info!</strong> Please Sign Up!
+        </div>
+    </div>
 </asp:Content>

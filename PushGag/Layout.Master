@@ -19,34 +19,47 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img class="img-responsive" src="/Images/.png"/></a>
+          <a class="navbar-brand" href="/">
+              <!-- <img class="img-responsive" src="/Images/logoPushGag.png"/> -->
+              PushGag
+          </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a>
-
-            </li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="?filter=1">WTF</a></li>
+            <li><a href="?filter=2">Movie</a></li>
+            <li><a href="?filter=3">Anime</a></li>
+            <li><a href="?filter=4">Gaming</a></li>
+            <li><a href="?filter=5">Girl</a></li>
+            <li><a href="?filter=6">Boy</a></li>
+            <li><a href="?filter=7">Gif</a></li>
+            <li><a href="?filter=8">DarkHumor</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-
-                <li><a href="#">Something else here</a></li>
+                <li><a href="?filter=9">Food</a></li>
+                <li><a href="?filter=10">Prank</a></li>
+                <li><a href="?filter=11">Arabic</a></li>
+                <li><a href="?filter=12">French</a></li>
+                <li><a href="?filter=13">Sport</a></li>
+                <li><a href="?filter=14">Quebec</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li class="dropdown-header">Cool stuff</li>
+                <li><a href="?filter=15">Party</a></li>
+                <li><a href="?filter=16">Love</a></li>
+                <li><a href="?filter=17">Texto</a></li>
+                <li><a href="?filter=18">Traveling</a></li>
+                <li><a href="?filter=19">Riddle</a></li>
+                <li><a href="?filter=20">WordGame</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <!-- class active exists -->
             <li><a runat="server" ID="logout" onServerClick="MyFuncion_Click" href="#">Log out</a></li>
-            <li><a runat="server" ID="login" href="#">Sign in</a></li>
-            <li><a runat="server" ID="signup" href="#">Sign up</a></li>
+            <li><a runat="server" ID="login" href="/login">Sign in</a></li>
+            <li><a runat="server" ID="signup" href="/register">Sign up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

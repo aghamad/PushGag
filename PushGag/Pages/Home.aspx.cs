@@ -26,34 +26,44 @@ namespace PushGag
                 Label1.Text = "Session was NOT Created";
             }
 
-            List<ArticleDTO> articlesList = articlesDAO.GetAll();
+            List<ArticleDTO> articlesList = null;
+
+            if (Request.QueryString["filter"] != null) {
+                string categorie = Request.QueryString["filter"];
+                Label1.Text = "FIltering by " + (EnumCategorie) int.Parse(categorie);
+                articlesList = articlesDAO.GetAllByCategory(categorie);
+            } else {
+                articlesList = articlesDAO.GetAll();
+            }
+
             foreach (ArticleDTO articleDTO in articlesList) {
                 SiteContent.Controls.Add(new LiteralControl(ShowArticle(articleDTO)));
             }
-                    
-
+                   
         }
 
         private string ShowArticle(ArticleDTO articleDTO) {
             string articleHTML = "";
             if (articleDTO.Type == EnumType.picture) {
-                articleHTML = "<div class='well well-lg'>"
-                                + "<div class='.text-muted'><h2>" + articleDTO.Title + "</h2></div>"
-                                + "<img class='img-responsive' width='620' src='" + articleDTO.Data + "'>"
-                                + "</div>";
+                articleHTML = "<div class='well well-lg' style='background: #5bc0de;'>"
+                                + "<h3>" + articleDTO.Title + "</h3>"
+                                + "<img class='img-responsive' src='" + articleDTO.Data + "'>";
             } else if (articleDTO.Type == EnumType.text) {
-                articleHTML = "<div class='well well-lg'>"
-                                + "<div class='.text-muted'><h2>" + articleDTO.Title + "</h2></div>"
-                                + "<p class='m-l-5'>" + articleDTO.Data + "</p>"
-                                + "</div>";
+                articleHTML = "<div class='well well-lg' style='background: #818a91;'>"
+                                + "<h3>" + articleDTO.Title + "</h3>"
+                                + "<p class='m-l-5'>" + articleDTO.Data + "</p>";                         
             } else if (articleDTO.Type == EnumType.video) {
-                articleHTML = "<div class='well well-lg'>"
-                                + "<div class='.text-muted m-l-5'><h2>" + articleDTO.Title + "</h2></div>"
+                articleHTML = "<div class='well well-lg' style='background: #f0ad4e;'>"
+                                + "<h3>" + articleDTO.Title + "</h3>"
                                 + "<div class='embed-responsive embed-responsive-16by9'>"
                                 + "<iframe class='embed-responsive-item' src='" + articleDTO.Data + "'></iframe>"
-                                + "</div>"
                                 + "</div>";
             }
+            // Date
+            articleHTML += "<p>" + articleDTO.DatePublished.ToString("dd-MM-yyyy") + "</p>";
+            // Close the well
+            articleHTML += "</div>";
+            // Add thumbs up 
             return articleHTML;
         }
 
