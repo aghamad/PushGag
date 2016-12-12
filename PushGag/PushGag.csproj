@@ -119,7 +119,9 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\navbar-fixed-top.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Admin\AdminHistory.aspx" />
     <Content Include="Pages\Admin\AdminLogin.aspx" />
+    <Content Include="Pages\Admin\AdminProfile.aspx" />
     <Content Include="Pages\Admin\AdminUpload.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
@@ -143,12 +145,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin\AdminHistory.aspx.cs">
+      <DependentUpon>AdminHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\AdminHistory.aspx.designer.cs">
+      <DependentUpon>AdminHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Admin\AdminLogin.aspx.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Admin\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AdminProfile.aspx.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\AdminProfile.aspx.designer.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\AdminUpload.aspx.cs">
       <DependentUpon>AdminUpload.aspx</DependentUpon>

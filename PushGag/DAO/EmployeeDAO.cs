@@ -25,11 +25,9 @@ namespace PushGag.DAO {
         public const string GET_REQUEST = "SELECT Id, name, mdp " +
                                                     "FROM employee WHERE name = @name and mdp = @mdp";
 
-        public const string COUNT_REQUEST = "SELECT COUNT(name) FROM employee WHERE name = @name";
-
-        public const string COUNTEMDP_REQUEST = "SELECT COUNT(name) FROM employee WHERE name = @name AND mdp = @mdp";
-
-        int count = 0;
+        public const string UPDATE_REQUEST = "UPDATE employee " +
+                                               "SET mdp = @mdp " +
+                                               "WHERE Id = @Id";
 
         public void Add(EmployeeDTO employeeDTO) {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
@@ -42,6 +40,17 @@ namespace PushGag.DAO {
             }
         }
 
+        public void Update(EmployeeDTO employeeDTO) {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand updateCommand = new MySqlCommand(UPDATE_REQUEST, connection)) {
+                    connection.Open();
+                    updateCommand.Parameters.AddWithValue("@mdp", employeeDTO.Password);
+                    updateCommand.Parameters.AddWithValue("@Id", employeeDTO.ID);
+                    updateCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
         public EmployeeDTO Read(int employeeID) {
             EmployeeDTO employeeDTO = null;
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))  {
@@ -49,8 +58,8 @@ namespace PushGag.DAO {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@Id", employeeID);
                     MySqlDataReader result = readCommand.ExecuteReader();
-
                     if (result.Read()) {
+                        employeeDTO = new EmployeeDTO();
                         employeeDTO.ID = result.GetInt32(0);
                         employeeDTO.Username = result.GetString(1);
                         employeeDTO.Password = result.GetString(2);
@@ -80,35 +89,6 @@ namespace PushGag.DAO {
             return employeeDTO;
         }
 
-
-        public int doesUserExist(string userName) {
-            //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNT_REQUEST, connection)) {
-                    connection.Open();
-                    readCommand.Parameters.AddWithValue("@user_name", userName);
-                    count = Convert.ToInt32(readCommand.ExecuteScalar());
-
-                }
-            }
-            return count;
-        }
-
-
-        public int doesUserMdpExist(string Password, string Name) {
-            //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMDP_REQUEST, connection)) {
-                    connection.Open();
-                    readCommand.Parameters.AddWithValue("@mdp", Password);
-                    readCommand.Parameters.AddWithValue("@name", Name);
-                    count = Convert.ToInt32(readCommand.ExecuteScalar());
-
-                }
-            }
-            return count;
-        }
-
-    }
+    } // End Class
 
 }

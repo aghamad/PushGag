@@ -10,7 +10,7 @@
 namespace PushGag.Pages.Admin {
     
     
-    public partial class AdminLogin {
+    public partial class AdminProfile {
         
         /// <summary>
         /// formLogin control.
@@ -38,6 +38,24 @@ namespace PushGag.Pages.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox PasswordTextBox;
+        
+        /// <summary>
+        /// PasswordTextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PasswordTextBox2;
+        
+        /// <summary>
+        /// CompareValidatorPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorPassword;
         
         /// <summary>
         /// SubmitButton control.

@@ -43,12 +43,14 @@ namespace PushGag.Pages.Admin
         }
 
         protected void Page_Load(object sender, EventArgs e) {
-            if (Session["Admin_ID"] == null) {
+            if (Session["user_name"] != null) {
+                // User, in admin page? Out
+                Response.Redirect("/");
+            } else if (Session["Admin_ID"] == null) {
                 Response.Redirect("/admin/login");
-            }  else {
+            } else {
                 // Load le ListBox avec nos categories 
                 articlesDAO = new ArticlesDAO();
-
                 foreach (EnumCategorie categorie in Enum.GetValues(typeof(EnumCategorie))) {
                     ListItem item = new ListItem(categorie.ToString());
                     DropDownListCategorie.Items.Add(item);
