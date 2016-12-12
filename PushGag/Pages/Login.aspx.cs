@@ -31,7 +31,7 @@ namespace PushGag.Pages
             {
                 lblUserPassW.Text = "connection ok";
                 Session["user_name"] = usernameTextBox.Text;
-
+                Response.Redirect("/");
             }
         }
     }

@@ -62,6 +62,8 @@ namespace PushGag
             // Date
             articleHTML += "<p>" + articleDTO.DatePublished.ToString("dd-MM-yyyy") + "</p>";
             // Close the well
+            // Button push
+            articleHTML += "<button type='button' class='btn btn-default btn- lg'>Pull</button>";
             articleHTML += "</div>";
             // Add thumbs up 
             return articleHTML;

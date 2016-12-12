@@ -35,7 +35,8 @@ namespace PushGag
             }
 
             Session.RemoveAll();
-            Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
+            //Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void Go_Admin_Event(object sender, EventArgs e) {

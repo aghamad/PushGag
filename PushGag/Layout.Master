@@ -62,6 +62,7 @@
             <li class="dropdown" id="login" runat="server">
                 <a href="/login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign in<span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li><a href="/login">User</a></li>
                     <li><a href="/admin/login">Admin</a></li>
                 </ul>
             </li>
