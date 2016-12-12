@@ -38,6 +38,10 @@ namespace PushGag
             routes.MapPageRoute("AdminProfile",
                 "admin/profile",
                 "~/Pages/Admin/AdminProfile.aspx");
+
+            routes.MapPageRoute("AdminHistory",
+                "admin/history",
+                "~/Pages/Admin/AdminHistory.aspx");
         }
 
         protected void Application_Start(object sender, EventArgs e)

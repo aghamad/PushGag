@@ -14,12 +14,12 @@ using System.IO;
 
 namespace PushGag.Pages.Admin
 {
-    public partial class AdminUpload : System.Web.UI.Page , ImageUploader
-    {
+    public partial class AdminUpload : System.Web.UI.Page , ImageUploader {
 
         private const string API_URL = "http://res.cloudinary.com/dqbwcvfq7/image/upload/";
 
         private ArticlesDAO articlesDAO;
+        private EmployeeLogDAO employeeLogDAO; 
         private Cloudinary cloudinaryAccount;
 
         public Cloudinary GetCloudinaryAccount() {
@@ -51,6 +51,7 @@ namespace PushGag.Pages.Admin
             } else {
                 // Load le ListBox avec nos categories 
                 articlesDAO = new ArticlesDAO();
+                employeeLogDAO = new EmployeeLogDAO();
                 foreach (EnumCategorie categorie in Enum.GetValues(typeof(EnumCategorie))) {
                     ListItem item = new ListItem(categorie.ToString());
                     DropDownListCategorie.Items.Add(item);
@@ -88,8 +89,14 @@ namespace PushGag.Pages.Admin
             articleDTO.Data = data;
             articleDTO.Type = type;
 
-            int result = articlesDAO.Add(articleDTO);
-            if (result == 1) {
+            long result = articlesDAO.Add(articleDTO);
+            if (result != 0) {
+                // Add to history
+                EmployeeLogDTO logDTO = new EmployeeLogDTO();
+                logDTO.EmployeeID = Int32.Parse(Session["Admin_ID"].ToString());
+                logDTO.ArticleID = (int) result;
+                employeeLogDAO.Add(logDTO);
+
                 AdminLabel.Text = "Succesfully Added your " + articleDTO.Type + " in " + articleDTO.Categorie;
             }
             else {

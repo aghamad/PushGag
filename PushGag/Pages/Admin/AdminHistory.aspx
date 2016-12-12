@@ -2,7 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
-    <asp:GridView ID="GridViewHistory" runat="server"></asp:GridView>
+    <div class="col-md-8">
+        <div class="alert alert-info">
+            <strong>Info!</strong> Everything you have pushed.
+        </div>
+        <form id="formGrid" runat="server">
+            <asp:GridView ID="GridViewHistory" class="table table-hover table-striped bg-success" GridLines="None"  runat="server">
+         
+            </asp:GridView>
+        </form>
+        <asp:Label ID="Testing" runat="server" Text=""></asp:Label>
+    </div>
+    <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="/admin">Go back</a></li>
+        </ul>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="OtherJavascript" runat="server">
 </asp:Content>

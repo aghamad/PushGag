@@ -15,16 +15,20 @@ namespace PushGag.DAO
                                                     "VALUES (@type, @categorie, @data, @article_title)";
 
         public const string GET_ALL_ARTICLES = "SELECT id_article, type, categorie, date_article, data, article_title, pulled " 
-                                                                                                             + "FROM articles "
-                                                                                                             + "ORDER BY date_article";
+                                                                                                    + "FROM articles "
+                                                                                                    + "ORDER BY date_article";
 
         public const string GET_ALL_ARTICLES_BY_CATEGORY = "SELECT id_article, type, categorie, date_article, data, article_title, pulled "
-                                                                                                     + "FROM articles "
-                                                                                                     + "WHERE categorie = @categorie "
-                                                                                                     + "ORDER BY date_article";
-
-        public int Add(ArticleDTO articleDTO) {
-            int result = 0;
+                                                                                                    + "FROM articles "
+                                                                                                    + "WHERE categorie = @categorie "
+                                                                                                    + "ORDER BY date_article";
+        /// <summary>
+        /// Add to table articles
+        /// </summary>
+        /// <param name="articleDTO"> Article to add </param>
+        /// <returns> ID of the last inserted article </returns>
+        public long Add(ArticleDTO articleDTO) {
+            long result = 0;
             using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
                 using (MySqlCommand addCommand = new MySqlCommand(ADD_REQUEST, connection)) {
                     connection.Open();
@@ -32,7 +36,8 @@ namespace PushGag.DAO
                     addCommand.Parameters.AddWithValue("@categorie", (int) articleDTO.Categorie);
                     addCommand.Parameters.AddWithValue("@data", articleDTO.Data);
                     addCommand.Parameters.AddWithValue("@article_title", articleDTO.Title);
-                    result = addCommand.ExecuteNonQuery();
+                    addCommand.ExecuteNonQuery();
+                    result = addCommand.LastInsertedId;
                 } 
             }
             return result;

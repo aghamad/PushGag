@@ -6,7 +6,9 @@
 
     <form id="formAdminUpload" class="form-group" runat="server">
     <div class="col-md-8">
-
+        <div class="alert alert-info">
+            <strong>Info!</strong> Upload article.
+        </div>
         <label>Titre</label>
         <asp:TextBox ID="titleTextBox" class="form-control" placeholder="Title" runat="server" Width="70%" required autofocus/>
         <br />
