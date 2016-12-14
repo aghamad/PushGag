@@ -3,12 +3,22 @@
     <title>Login - PushGag</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
-    <form id="formLogIn" runat="server">
-        <asp:TextBox ID="usernameTextBox" placeholder="Username" runat="server"/></br>
-        <asp:TextBox ID="passwordTextBox" placeholder="Password" runat="server" TextMode="Password"/>
-        <br />
-        <asp:Label ID="lblUserPassW" runat="server"></asp:Label>
-        </br>
-        <asp:Button class="btn-success" ID="SubmitButton" Text="Sign in" runat="server" OnClick="Login_User" />
-    </form>
+    <div class="col-md-8">
+        <div class="alert alert-info">
+            <strong>Hey!</strong> PushUser, how are you doing today?
+        </div>
+        <form id="formLogIn" runat="server">
+            <div class="form-group">
+                <label for="usernameTextBox">Username</label>
+                <asp:TextBox  ID="usernameTextBox" class="form-control" placeholder="Username" runat="server" Width="50%" required autofocus/>
+            </div>
+            <div class="form-group">
+                <label for="passwordTextBox">Password</label>
+                <asp:TextBox ID="passwordTextBox" class="form-control" placeholder="Password" runat="server" Width="50%" TextMode="Password" required autofocus/>
+            </div>
+            <asp:Button class="btn btn-success" ID="SubmitButton" Text="Sign in" runat="server" OnClick="Login_User" />
+            <br />
+            <asp:Label ID="lblUserPassW" runat="server" Text=""></asp:Label>
+        </form>
+    </div>
 </asp:Content>
