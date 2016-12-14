@@ -22,6 +22,15 @@ namespace PushGag.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteContent;
         
         /// <summary>
+        /// ScriptManagerArticle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManagerArticle;
+        
+        /// <summary>
         /// commentTxt control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,14 @@ namespace PushGag.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// CommentsContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CommentsContent;
     }
 }

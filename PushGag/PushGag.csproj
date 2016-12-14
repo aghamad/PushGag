@@ -143,6 +143,7 @@
     <Compile Include="DAO\UsersDAO.cs" />
     <Compile Include="DAO\UsersLogDAO.cs" />
     <Compile Include="DTO\ArticleDTO.cs" />
+    <Compile Include="DTO\CommentsDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\EmployeeLogDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />

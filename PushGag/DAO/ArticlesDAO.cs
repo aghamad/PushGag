@@ -142,31 +142,27 @@ namespace PushGag.DAO
             }
         }
 
-        public List<T> GetComments()
+        public List<CommentsDTO> GetComments(string filter)
         {
-            List<T> listArticles = new List<T>();
+            List<CommentsDTO> listComments = new List<CommentsDTO>();
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
-                using (MySqlCommand getCommand = new MySqlCommand(GET_ALL_ARTICLES, connection))
+                using (MySqlCommand getCommand = new MySqlCommand(GET_COMMENTS, connection))
                 {
+                    getCommand.Parameters.AddWithValue("@id_article", filter);
                     connection.Open();
                     MySqlDataReader result = getCommand.ExecuteReader();
-                    ArticleDTO articleDTO = null;
+                    CommentsDTO commentsDTO = null;
                     while (result.Read())
                     {
-                        articleDTO = new ArticleDTO();
-                        articleDTO.ArticleID = result.GetInt32(0);
-                        articleDTO.Type = (EnumType)result.GetInt32(1);
-                        articleDTO.Categorie = (EnumCategorie)result.GetInt32(2);
-                        articleDTO.DatePublished = result.GetDateTime(3);
-                        articleDTO.Data = result.GetString(4);
-                        articleDTO.Title = result.GetString(5);
-                        articleDTO.Pulled = result.GetInt32(6);
-                        listArticles.Add(articleDTO);
+                        commentsDTO = new CommentsDTO();
+                        commentsDTO.Comment = result.GetString(0);
+                        commentsDTO.Username = result.GetString(1);
+                        listComments.Add(commentsDTO);
                     }
                 }
             }
-            return listArticles;
+            return listComments;
         }
 
     }

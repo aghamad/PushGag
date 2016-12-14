@@ -18,16 +18,23 @@ namespace PushGag.Pages
         {
             articlesDAO = new ArticlesDAO();
             List<ArticleDTO> articlesList = null;
+            List<CommentsDTO> commentsList = null;
             string categorie = Request.QueryString["filter"];
+            string id = Request.QueryString["filter"];
             //Label1.Text = "FIltering by " + (EnumCategorie)int.Parse(categorie);
-            articlesList = articlesDAO.GetAllByCategory(categorie);
+            articlesList = articlesDAO.GetAllById(id);
+            commentsList = articlesDAO.GetComments(id);
 
             foreach (ArticleDTO articleDTO in articlesList)
             {
                 SiteContent.Controls.Add(new LiteralControl(ShowArticle(articleDTO)));
                 
             }
-            
+
+            foreach (CommentsDTO commentsDTO in commentsList)
+            {
+                CommentsContent.Controls.Add(new LiteralControl(ShowComments(commentsDTO)));
+            }
 
         }
         private string ShowArticle(ArticleDTO articleDTO)
@@ -67,6 +74,15 @@ namespace PushGag.Pages
             return articleHTML;
         }
 
+        private string ShowComments(CommentsDTO commentsDTO)
+        {
+            string commentHTML = "";
+
+            commentHTML = "<li class='list-group-item'><b>"+commentsDTO.Username+"</b>&nbsp;&nbsp;" + commentsDTO.Comment +"</li>";
+
+            return commentHTML;
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             if (Session["user_name"] != null)
@@ -75,6 +91,7 @@ namespace PushGag.Pages
                 string username = Session["user_name"].ToString();
                 articlesDAO = new ArticlesDAO();
                 articlesDAO.AddComment(idArticle, username, commentTxt.Text);
+                Response.Redirect(Request.RawUrl);
             }
             else {
                 Response.Redirect("Login.aspx");
