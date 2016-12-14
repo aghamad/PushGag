@@ -20,7 +20,7 @@ namespace PushGag.DAO {
                                                             "VALUES (@user_name, @mdp_user, @email)";
 
         public const string READ_REQUEST = "SELECT user_id, user_name, date_start, mdp_user, email " +
-                                                                 "FROM users WHERE user_id = @user_id";
+                                                                 "FROM users WHERE user_name = @user_name";
 
         public const string COUNT_REQUEST = "SELECT COUNT(user_name) FROM users WHERE user_name = @user_name";
 
@@ -42,15 +42,16 @@ namespace PushGag.DAO {
             }
         }
 
-        public UserDTO Read(int userID) {
+        public UserDTO Read(string userName) {
             UserDTO userDTO = null;
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))  {
                 using (MySqlCommand readCommand = new MySqlCommand(READ_REQUEST, connection)) {
                     connection.Open();
-                    readCommand.Parameters.AddWithValue("@user_id", userID);
+                    readCommand.Parameters.AddWithValue("@user_name", userName);
                     MySqlDataReader result = readCommand.ExecuteReader();
 
                     if (result.Read()) {
+                        userDTO = new UserDTO();
                         userDTO.ID = result.GetInt32(0);
                         userDTO.Username = result.GetString(1);
                         userDTO.DateStart = result.GetDateTime(2);
@@ -59,60 +60,41 @@ namespace PushGag.DAO {
                     }
                 }
             }
-
             return userDTO;
         }
 
 
-        public int doesUserExist(string userName)
-        {
-            //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-            {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNT_REQUEST, connection))
-                {
+        public int doesUserExist(string userName) {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNT_REQUEST, connection)){
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@user_name", userName);
                     count = Convert.ToInt32(readCommand.ExecuteScalar());
-
                 }
             }
-
             return count;
         }
 
-        public int doesEmailExist(string email)
-        {
-            //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-            {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMAIL_REQUEST, connection))
-                {
+        public int doesEmailExist(string email) {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMAIL_REQUEST, connection)){
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@email", email);
                     count = Convert.ToInt32(readCommand.ExecuteScalar());
-
                 }
             }
-
             return count;
         }
 
-        public int doesUserMdpExist(string Password, string userName)
-        {
-            //UserDTO userDTO = null;
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-            {
-                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMDP_REQUEST, connection))
-                {
+        public int doesUserMdpExist(string Password, string userName) {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand readCommand = new MySqlCommand(COUNTEMDP_REQUEST, connection)) {
                     connection.Open();
                     readCommand.Parameters.AddWithValue("@mdp_user", Password);
                     readCommand.Parameters.AddWithValue("@user_name", userName);
                     count = Convert.ToInt32(readCommand.ExecuteScalar());
-
                 }
             }
-
             return count;
         }
 

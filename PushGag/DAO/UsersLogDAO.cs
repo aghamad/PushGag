@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using PushGag.DTO;
 
 namespace PushGag.DAO
 {
-    public class UsersLogDAO
-    {
+    public class UsersLogDAO {
 
         private string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnStr"].ConnectionString;
 
         public const string COUNTARTICLE_REQUEST = "SELECT COUNT(user_name) FROM users_log"
         +   "WHERE id_article = @id_article AND user_name = @user_name";
 
-        public const string INSERT_REQUEST = "INSERT INTO users_log (user_name, id_article, pull) "
-        +   "VALUES (@user_name, @id_article, 'TRUE')";
+        public const string INSERT_REQUEST = "INSERT INTO users_log (user_id, id_article, pull) "
+        + "VALUES (@user_id, @id_article, TRUE)";
 
         public const string UPDATE_REQUEST = "UPDATE users_log SET pull = @pull"
         +   "WHERE id_article = @id_article AND user_name = @user_name";
@@ -23,10 +23,20 @@ namespace PushGag.DAO
         public const string COUNTPULLED_REQUEST = "SELECT COUNT(user_name) FROM users_log" 
         +   "WHERE id_article = @id_article AND user_name = @user_name AND pull = @pull";
 
-        int count = 0;
+        private int count = 0;
 
-        public int doesArticlesExist(int idArticle, string userName)
-        {
+        public void AddPull(UsersLogDTO logDTO)  {
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString)) {
+                using (MySqlCommand addCommand = new MySqlCommand(INSERT_REQUEST, connection)) {
+                    connection.Open();
+                    addCommand.Parameters.AddWithValue("@user_id", logDTO.UserID);
+                    addCommand.Parameters.AddWithValue("@id_article", logDTO.ArticleID);
+                    addCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public int doesArticlesExist(int idArticle, string userName) {
             //UserDTO userDTO = null;
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -41,20 +51,6 @@ namespace PushGag.DAO
             }
 
             return count;
-        }
-
-        public void AddPull(int idArticle, string userName)
-        {
-            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
-            {
-                using (MySqlCommand addCommand = new MySqlCommand(INSERT_REQUEST, connection))
-                {
-                    connection.Open();
-                    addCommand.Parameters.AddWithValue("@user_name", userName);
-                    addCommand.Parameters.AddWithValue("@mdp_user", idArticle);
-                    addCommand.ExecuteNonQuery();
-                }
-            }
         }
 
         public void UpdatePull(int idArticle, string userName, bool pull)

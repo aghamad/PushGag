@@ -14,10 +14,12 @@ namespace PushGag
 
 
         private ArticlesDAO articlesDAO;
+        private UsersLogDAO usersLogDAO;
 
         protected void Page_Load(object sender, EventArgs e) {
 
             articlesDAO = new ArticlesDAO();
+            usersLogDAO = new UsersLogDAO();
 
             if (Session["user_name"] != null) {
                 Label1.Text =   "Session Created with success "+ Session["user_name"].ToString(); ;
@@ -38,10 +40,14 @@ namespace PushGag
             }
 
             foreach (ArticleDTO articleDTO in articlesList) {
+                Button ButtonPull = new Button();
+                ButtonPull.Text = "Pull";
+                ButtonPull.ID = articleDTO.ArticleID.ToString();
+                ButtonPull.ControlStyle.CssClass = "btn btn-warning";
+                ButtonPull.Click += new EventHandler(Pull_Click);
+                SiteContent.Controls.Add(ButtonPull);
                 SiteContent.Controls.Add(new LiteralControl(ShowArticle(articleDTO)));
             }
-            Button button = new Button();
-            button.Click += new EventHandler(this.Pull_Click);
         }
 
         private string ShowArticle(ArticleDTO articleDTO) {
@@ -55,7 +61,7 @@ namespace PushGag
                                 + "<h3>" + articleDTO.Title + "</h3>"
                                 + "<p class='m-l-5'>" + articleDTO.Data + "</p>";                         
             } else if (articleDTO.Type == EnumType.video) {
-                articleHTML = "<div class='well well-lg' style='background: #f0ad4e;'>"
+                articleHTML = "<div class='well well-lg' style='background: #f0ad4e;' Autopostback=false >"
                                 + "<h3>" + articleDTO.Title + "</h3>"
                                 + "<div class='embed-responsive embed-responsive-16by9'>"
                                 + "<iframe class='embed-responsive-item' src='" + articleDTO.Data + "'></iframe>"
@@ -63,29 +69,32 @@ namespace PushGag
             }
             // Date
             articleHTML += "<p>" + articleDTO.DatePublished.ToString("dd-MM-yyyy") + "</p>";
-            // Close the well
             // Button push with Ajax
-            articleHTML += "<asp:UpdatePanel ID='UpdatePanel1' runat='server'>";
-            articleHTML += "<ContentTemplate>";
-            articleHTML += "<asp:Button ID='button' type='button' OnClick='Pull_Click' class='btn btn-default btn- lg'>Pull</asp:button>";
-            articleHTML += "</ContentTemplate>";
-            articleHTML += "</asp:UpdatePanel>";
-            articleHTML += "</div>";
             // Add thumbs up 
+            
+            // Close the well
+            articleHTML += "</div>";
             return articleHTML;
         }
 
 
+        protected void Pull_Click(object sender, EventArgs e)  {
+            if (Session["user_name"] != null) {
+                Button buttonClicked = sender as Button;
+                int articleID = int.Parse(buttonClicked.ID);
 
+                // Test
+                LabelTest.Text = "Clicked on article " + articleID;
 
-        protected void Pull_Click(object sender, EventArgs e)
-        {
-              
-            Button button = sender as Button;
-            button.Text = "izane";  
+                UsersLogDTO logDTO = new UsersLogDTO();
+                logDTO.UserID = int.Parse(Session["User_ID"].ToString());
+                logDTO.ArticleID = articleID;
+                usersLogDAO.AddPull(logDTO);
+            } else {
+                // Login!!
+                Response.Redirect("/login");
+            }
         }
 
-
-
-        }
+    }
 }
