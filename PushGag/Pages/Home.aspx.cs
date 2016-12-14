@@ -39,7 +39,8 @@ namespace PushGag
             foreach (ArticleDTO articleDTO in articlesList) {
                 SiteContent.Controls.Add(new LiteralControl(ShowArticle(articleDTO)));
             }
-                   
+            Button button = new Button();
+            button.Click += new EventHandler(this.Pull_Click);
         }
 
         private string ShowArticle(ArticleDTO articleDTO) {
@@ -62,12 +63,26 @@ namespace PushGag
             // Date
             articleHTML += "<p>" + articleDTO.DatePublished.ToString("dd-MM-yyyy") + "</p>";
             // Close the well
-            // Button push
-            articleHTML += "<button type='button' class='btn btn-default btn- lg'>Pull</button>";
+            // Button push with Ajax
+            articleHTML += "<asp:UpdatePanel ID='UpdatePanel1' runat='server'>";
+            articleHTML += "<ContentTemplate>";
+            articleHTML += "<asp:Button ID='button' type='button' OnClick='Pull_Click' class='btn btn-default btn- lg'>Pull</asp:button>";
+            articleHTML += "</ContentTemplate>";
+            articleHTML += "</asp:UpdatePanel>";
             articleHTML += "</div>";
             // Add thumbs up 
             return articleHTML;
         }
 
-    }
+
+        protected void Pull_Click(object sender, EventArgs e)
+        {
+              
+            Button button = sender as Button;
+            button.Text = "izane";  
+        }
+
+
+
+        }
 }
