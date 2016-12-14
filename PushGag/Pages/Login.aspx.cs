@@ -16,23 +16,18 @@ namespace PushGag.Pages
         }
 
         protected void Login_User(object sender, EventArgs e) {
-
-
             UsersDAO usersDAO = new UsersDAO();
             int countUserPassw = usersDAO.doesUserMdpExist(passwordTextBox.Text, usernameTextBox.Text);
-            //int countUsers = usersDAO.doesUserExist(usernameTextBox.Text);
 
-            if (countUserPassw == 0)
-            {
+            if (countUserPassw == 0) {
                 lblUserPassW.Text = "Username ou mot de passe Incorrect.";
  
-            }
-            else
-            {
+            } else {
                 lblUserPassW.Text = "connection ok";
                 Session["user_name"] = usernameTextBox.Text;
                 Response.Redirect("/");
             }
         }
+
     }
 }
