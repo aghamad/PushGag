@@ -22,6 +22,13 @@ namespace PushGag.DAO
                                                                                                     + "FROM articles "
                                                                                                     + "WHERE categorie = @categorie "
                                                                                                     + "ORDER BY date_article";
+        public const string GET_ALL_ARTICLES_ID = "SELECT id_article, type, categorie, date_article, data, article_title, pulled "
+                                                                                                    + "FROM articles "
+                                                                                                    + "WHERE id_article = @id_article "
+                                                                                                    + "ORDER BY date_article";
+        public const string ADD_COMMENT = "INSERT INTO comments (id_article, user_name, comment)"
+                                                    + "VALUES (@id_article, @user_name, @comment)";
+        public const string GET_COMMENTS = "SELECT comment, user_name FROM comments WHERE id_article = @id_article";
         /// <summary>
         /// Add to table articles
         /// </summary>
@@ -75,6 +82,78 @@ namespace PushGag.DAO
                     MySqlDataReader result = getCommand.ExecuteReader();
                     ArticleDTO articleDTO = null;
                     while (result.Read()){
+                        articleDTO = new ArticleDTO();
+                        articleDTO.ArticleID = result.GetInt32(0);
+                        articleDTO.Type = (EnumType)result.GetInt32(1);
+                        articleDTO.Categorie = (EnumCategorie)result.GetInt32(2);
+                        articleDTO.DatePublished = result.GetDateTime(3);
+                        articleDTO.Data = result.GetString(4);
+                        articleDTO.Title = result.GetString(5);
+                        articleDTO.Pulled = result.GetInt32(6);
+                        listArticles.Add(articleDTO);
+                    }
+                }
+            }
+            return listArticles;
+        }
+
+        public List<ArticleDTO> GetAllById(string filter)
+        {
+            List<ArticleDTO> listArticles = new List<ArticleDTO>();
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand getCommand = new MySqlCommand(GET_ALL_ARTICLES_ID, connection))
+                {
+                    getCommand.Parameters.AddWithValue("@id_article", filter);
+                    connection.Open();
+                    MySqlDataReader result = getCommand.ExecuteReader();
+                    ArticleDTO articleDTO = null;
+                    while (result.Read())
+                    {
+                        articleDTO = new ArticleDTO();
+                        articleDTO.ArticleID = result.GetInt32(0);
+                        articleDTO.Type = (EnumType)result.GetInt32(1);
+                        articleDTO.Categorie = (EnumCategorie)result.GetInt32(2);
+                        articleDTO.DatePublished = result.GetDateTime(3);
+                        articleDTO.Data = result.GetString(4);
+                        articleDTO.Title = result.GetString(5);
+                        articleDTO.Pulled = result.GetInt32(6);
+                        listArticles.Add(articleDTO);
+                    }
+                }
+            }
+            return listArticles;
+        }
+
+        public void AddComment(int idArticle, string username, string comment)
+        {
+           
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand addCommand = new MySqlCommand(ADD_COMMENT, connection))
+                {
+                    connection.Open();
+                    addCommand.Parameters.AddWithValue("@id_article", idArticle);
+                    addCommand.Parameters.AddWithValue("@user_name", username);
+                    addCommand.Parameters.AddWithValue("@comment", comment);
+                    addCommand.ExecuteNonQuery();
+               
+                }
+            }
+        }
+
+        public List<T> GetComments()
+        {
+            List<T> listArticles = new List<T>();
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                using (MySqlCommand getCommand = new MySqlCommand(GET_ALL_ARTICLES, connection))
+                {
+                    connection.Open();
+                    MySqlDataReader result = getCommand.ExecuteReader();
+                    ArticleDTO articleDTO = null;
+                    while (result.Read())
+                    {
                         articleDTO = new ArticleDTO();
                         articleDTO.ArticleID = result.GetInt32(0);
                         articleDTO.Type = (EnumType)result.GetInt32(1);

@@ -123,6 +123,7 @@
     <Content Include="Pages\Admin\AdminLogin.aspx" />
     <Content Include="Pages\Admin\AdminProfile.aspx" />
     <Content Include="Pages\Admin\AdminUpload.aspx" />
+    <Content Include="Pages\Articles.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Registration.aspx" />
@@ -175,6 +176,13 @@
     </Compile>
     <Compile Include="Pages\Admin\AdminUpload.aspx.designer.cs">
       <DependentUpon>AdminUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Articles.aspx.cs">
+      <DependentUpon>Articles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Articles.aspx.designer.cs">
+      <DependentUpon>Articles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
