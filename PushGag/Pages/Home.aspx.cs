@@ -12,6 +12,7 @@ namespace PushGag
 {
     public partial class Home : System.Web.UI.Page {
 
+
         private ArticlesDAO articlesDAO;
 
         protected void Page_Load(object sender, EventArgs e) {
