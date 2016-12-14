@@ -22,6 +22,33 @@ namespace PushGag {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// ScriptManagerPull control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManagerPull;
+        
+        /// <summary>
+        /// UpdatePanelPull control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelPull;
+        
+        /// <summary>
+        /// LabelTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTest;
+        
+        /// <summary>
         /// SiteContent control.
         /// </summary>
         /// <remarks>

@@ -8,9 +8,19 @@
             <h3>Welcome to PushGag!</h3>
         </div>
         <asp:Label ID="Label1" runat="server"></asp:Label>
-        <div runat="server" id="SiteContent">
-            
-        </div>
+        <form runat="server">
+            <asp:ScriptManager ID="ScriptManagerPull" runat="server"></asp:ScriptManager>
+            <!-- Ajax -->
+            <asp:UpdatePanel ID="UpdatePanelPull" runat="server">
+                <ContentTemplate>
+                    <asp:Label ID="LabelTest" runat="server" Text="Clicked on article: "></asp:Label>
+                    <div runat="server" id="SiteContent">
+
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel> 
+            <!-- /Ajax -->   
+       </form>
     </div>
     <div class="col-md-4">
         <div class="alert alert-info">

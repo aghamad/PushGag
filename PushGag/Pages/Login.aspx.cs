@@ -23,8 +23,10 @@ namespace PushGag.Pages
                 lblUserPassW.Text = "Username ou mot de passe Incorrect.";
  
             } else {
-                lblUserPassW.Text = "connection ok";
-                Session["user_name"] = usernameTextBox.Text;
+                lblUserPassW.Text = "Connection OK";
+                UserDTO userDTO = usersDAO.Read(usernameTextBox.Text);
+                Session["user_name"] = userDTO.Username;
+                Session["User_ID"] = userDTO.ID;
                 Response.Redirect("/");
             }
         }

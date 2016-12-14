@@ -145,6 +145,7 @@
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\EmployeeLogDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\UsersLogDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
