@@ -46,6 +46,14 @@ namespace PushGag
                 ButtonPull.ControlStyle.CssClass = "btn btn-warning";
                 ButtonPull.Click += new EventHandler(Pull_Click);
                 SiteContent.Controls.Add(ButtonPull);
+                //SiteContent.Controls.Add(new LiteralControl(ShowArticle(articleDTO)));
+
+                Button ButtonComment = new Button();
+                ButtonComment.Text = "Comment";
+                ButtonComment.ID = articleDTO.ArticleID.ToString()+ "00";
+                ButtonComment.ControlStyle.CssClass = "btn btn-warning";
+                ButtonComment.Click += new EventHandler(Comment_Click);
+                SiteContent.Controls.Add(ButtonComment);
                 SiteContent.Controls.Add(new LiteralControl(ShowArticle(articleDTO)));
             }
         }
@@ -94,6 +102,16 @@ namespace PushGag
                 // Login!!
                 Response.Redirect("/login");
             }
+        }
+
+        protected void Comment_Click(object sender, EventArgs e) {
+            Button buttonClicked = sender as Button;
+            int articleID = int.Parse(buttonClicked.ID);
+            LabelTest.Text = "Clicked on article " + articleID;
+            //UsersLogDTO logDTO = new UsersLogDTO();
+            string myId = articleID.ToString();
+            myId = myId.Remove(myId.Length - 2);
+            Response.Redirect("/Pages/Articles.aspx?filter="+ myId);
         }
 
     }

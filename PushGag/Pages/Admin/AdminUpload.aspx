@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
 
     <form id="formAdminUpload" class="form-group" runat="server">
+        <asp:ScriptManager ID="ScriptManagerUpload" runat="server"></asp:ScriptManager>
     <div class="col-md-8">
         <div class="alert alert-info">
             <strong>Info!</strong> Upload article.

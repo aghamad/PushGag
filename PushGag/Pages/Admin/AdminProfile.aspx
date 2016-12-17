@@ -7,6 +7,7 @@
             <strong>Info!</strong> Want to push it? Check out your exclusive Push page.
         </div>
         <form id="formLogin" runat="server">
+            <asp:ScriptManager ID="ScriptManagerProfil" runat="server"></asp:ScriptManager>
             <div class="form-group">
                 <label for="UsernameTextBox">Username</label>
                 <div class="input-group">

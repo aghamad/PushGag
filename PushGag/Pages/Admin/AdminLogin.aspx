@@ -10,6 +10,7 @@
             <strong>Info!</strong> Want to be admin? Send us an email.
         </div>
         <form id="formLogin" runat="server">
+            <asp:ScriptManager ID="ScriptManagerAdminLogin" runat="server"></asp:ScriptManager>
             <div class="form-group">
                 <label for="UsernameTextBox">Username</label>
                 <asp:TextBox  ID="UsernameTextBox" class="form-control" placeholder="Enter Username" runat="server" Width="50%" required autofocus/>

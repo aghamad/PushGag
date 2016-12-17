@@ -8,6 +8,7 @@
             <strong>Hey!</strong> PushUser, how are you doing today?
         </div>
         <form id="formLogIn" runat="server">
+            <asp:ScriptManager ID="ScriptManagerLogin" runat="server"></asp:ScriptManager>
             <div class="form-group">
                 <label for="usernameTextBox">Username</label>
                 <asp:TextBox  ID="usernameTextBox" class="form-control" placeholder="Username" runat="server" Width="50%" required autofocus/>

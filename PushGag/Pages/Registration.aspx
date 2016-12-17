@@ -9,6 +9,7 @@
         </div>
         <form id="formRegistration" runat="server">
             <div class="form-group">
+                <asp:ScriptManager ID="ScriptManagerRegistration" runat="server"></asp:ScriptManager>
                 <label for="emailTextBox">Email</label>
                 <asp:TextBox  ID="emailTextBox" class="form-control" placeholder="Email" runat="server" Width="50%" required autofocus/>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Veillez entrer un email" ControlToValidate="emailTextBox">*</asp:RequiredFieldValidator>

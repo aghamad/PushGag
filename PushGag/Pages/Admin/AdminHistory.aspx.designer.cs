@@ -22,6 +22,15 @@ namespace PushGag.Pages.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm formGrid;
         
         /// <summary>
+        /// ScriptManagerAdminHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManagerAdminHistory;
+        
+        /// <summary>
         /// GridViewHistory control.
         /// </summary>
         /// <remarks>

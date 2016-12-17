@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PushGag.DAO.ArticlesDAO" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAoAAAAQAAAAAAAAAAAAAABAAAQAigAgEAQAAA=</HashCode>
+      <FileName>DAO\ArticlesDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DAO.EmployeeDAO" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAQgAAAAAABAEAAAAAAgAAAAAAAAACAAAAAAAAQ=</HashCode>
+      <FileName>DAO\EmployeeDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DAO.EmployeeLogDAO" Collapsed="true">
+    <Position X="1.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>DAO\EmployeeLogDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DAO.UsersDAO" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIIAAAgAgAAAAAAFAAAAAAggAAAAAAAIKAAIAAAAAA=</HashCode>
+      <FileName>DAO\UsersDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DAO.UsersLogDAO" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAEAgABAAAAAABIAAAAAAAAIAIAAAACAAAAAAAAQ=</HashCode>
+      <FileName>DAO\UsersLogDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DTO.ArticleDTO" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEEAkAAAAAAIAAEAAABAAgQAAAAAAAAA=</HashCode>
+      <FileName>DTO\ArticleDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DTO.CommentsDTO" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAgAAAAQAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>DTO\CommentsDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DTO.EmployeeDTO" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\EmployeeDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DTO.EmployeeLogDTO" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>DTO\EmployeeLogDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DTO.UserDTO" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAgAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\UserDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.DTO.UsersLogDTO" Collapsed="true">
+    <Position X="1.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>DTO\UsersLogDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Global" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAEAAAAAAAAAAFCIBQAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Layout" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIgAAAQAAAAAAAAAEIAAACAAAAAAiAAAIAEAA=</HashCode>
+      <FileName>Layout.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Home" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAIAAAAAAAAAKQCAAgAAAAAAEAIAAEA=</HashCode>
+      <FileName>Pages\Home.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Pages.Admin.AdminHistory" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAQAAAAAAIAAACAAAAAAAIAAgA=</HashCode>
+      <FileName>Pages\Admin\AdminHistory.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Pages.Admin.AdminLogin" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAQQQAAAAQBAABAIIAAA=</HashCode>
+      <FileName>Pages\Admin\AdminLogin.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Pages.Admin.AdminProfile" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAECAEAAAAAAAAAAAAAgASASAAAAABAADAIAAAA=</HashCode>
+      <FileName>Pages\Admin\AdminProfile.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Pages.Admin.AdminUpload" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAEAAIIAAAIFCQgAAAIAIACAgAAAAAMIQgA=</HashCode>
+      <FileName>Pages\Admin\AdminUpload.aspx.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PushGag.Pages.Articles" Collapsed="true">
+    <Position X="1.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAAIAAAAAAAIAAAAAAAgAAACAQAAAAAAAAAIEAEA=</HashCode>
+      <FileName>Pages\Articles.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Pages.Login" Collapsed="true">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAACAABAAAEAAQgAAAQAAAAAIAAAA=</HashCode>
+      <FileName>Pages\Login.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PushGag.Pages.Registration" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBBACAAAAAgAEABACAAJAAAAEAQAAACAAAAAAIgAgA=</HashCode>
+      <FileName>Pages\Registration.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="PushGag.Util.ImageUploader" Collapsed="true">
+    <Position X="1.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\ImageUploader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="PushGag.DTO.EnumType" Collapsed="true">
+    <Position X="3" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>DTO\ArticleDTO.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PushGag.DTO.EnumCategorie" Collapsed="true">
+    <Position X="1.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAAAAEAAAAAAAhQBAgAgACAAAIASAAAAAIDEAAY=</HashCode>
+      <FileName>DTO\ArticleDTO.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

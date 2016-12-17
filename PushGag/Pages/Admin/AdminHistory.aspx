@@ -7,6 +7,7 @@
             <strong>Info!</strong> Everything you have pushed.
         </div>
         <form id="formGrid" runat="server">
+            <asp:ScriptManager ID="ScriptManagerAdminHistory" runat="server"></asp:ScriptManager>
             <asp:GridView ID="GridViewHistory" class="table table-hover table-striped bg-success" GridLines="None"  runat="server">
          
             </asp:GridView>
